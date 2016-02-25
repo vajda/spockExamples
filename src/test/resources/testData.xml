@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests>
+    <testVariation description="First test">
+      <first>1</first>
+      <second>1</second>
+      <result>2</result>
+    </testVariation>
+    <testVariation description="Second test">
+      <first>3</first>
+      <second>4</second>
+      <result>7</result>
+    </testVariation>
+    <testVariation description="Failing test">
+      <first>2</first>
+      <second>7</second>
+      <result>10</result>
+    </testVariation>
+    <testVariation description="Fourth test">
+      <first>3</first>
+      <second>5</second>
+      <result>8</result>
+    </testVariation>
+</tests>

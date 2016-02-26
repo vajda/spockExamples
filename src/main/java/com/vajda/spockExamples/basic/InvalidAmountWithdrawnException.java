@@ -7,6 +7,8 @@ import java.math.BigDecimal;
  */
 public class InvalidAmountWithdrawnException extends RuntimeException {
 
+    private static final long serialVersionUID = -7809544826023035323L;
+
     private final BigDecimal amount;
 
     public InvalidAmountWithdrawnException(BigDecimal amount) {

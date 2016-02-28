@@ -2,6 +2,7 @@ package com.vajda.spockExamples.interactions
 
 import org.slf4j.Logger
 
+import spock.lang.IgnoreRest
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -103,6 +104,20 @@ class PublisherSpec extends Specification {
         
         then:
         1 * worker.doWorkA()
+    }
+    
+    def "workB should be called when subscriber returns false"() {
+        given:
+        def sub1 = Mock(Subscriber) {
+            receive("event1") >> false
+        }
+        publisher.subscribers = [sub1]
+        
+        when:
+        publisher.publish("event1")
+        
+        then:
+        1 * worker.doWorkB()
     }
     
     @Unroll

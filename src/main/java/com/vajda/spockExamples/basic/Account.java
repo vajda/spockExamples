@@ -21,7 +21,7 @@ public class Account {
     }
 
     public void withdraw(BigDecimal amount) {
-        if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidAmountWithdrawnException(amount);
         }
         balance = balance.subtract(amount);

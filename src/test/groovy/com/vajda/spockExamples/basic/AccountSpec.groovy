@@ -4,6 +4,7 @@ import com.vajda.spockExamples.basic.Account;
 import com.vajda.spockExamples.basic.InvalidAmountWithdrawnException;
 
 import spock.lang.Ignore
+import spock.lang.IgnoreRest
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -91,5 +92,6 @@ class AccountSpec extends Specification {
         4.2          | 2      | 2.2
         5            | 1      | 4
         3            | 3      | 0
+        2            | 1      | 0
     }
 }

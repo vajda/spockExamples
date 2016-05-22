@@ -25,9 +25,14 @@ public class ProductController {
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public List<ProductDTO> list() {
+    public List<ProductDTO> findAll() {
         List<Product> products = productRepository.findAll();
         return jTransfo.convertList(products, ProductDTO.class);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ProductDTO findOne(@PathVariable("id") Integer id) {
+    	return jTransfo.convertTo(productRepository.findOne(id), ProductDTO.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

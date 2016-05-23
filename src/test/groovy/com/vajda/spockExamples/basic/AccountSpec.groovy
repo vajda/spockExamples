@@ -53,7 +53,7 @@ class AccountSpec extends Specification {
         e.amount == -1
     }
 
-    def "new account is increased by 3 from old account"() {
+    def "after wthdrawal new account balance is lower than old account balance"() {
         given:
         def account = new Account(3.5)
 

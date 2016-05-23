@@ -45,7 +45,7 @@ class GroovySpec extends Specification {
     def "maps"() {
         given:
         def map1 = [:]
-        def map2 = ["a":3, "b":5, "c":2]
+        def map2 = ["a":3, b:5, "c":2]
         
         when:
         map1.val1 = 2

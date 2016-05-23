@@ -23,7 +23,8 @@
 
 * Stubbing (param type, param value, expression)
 * Expecting invocations
-* Mocking & stubbing together
+* Mocking & Stubbing together
+* Spying & Partial mocking
 
 
 ## Data Driven Testing ##

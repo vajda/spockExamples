@@ -105,7 +105,21 @@ class PublisherSpec extends Specification {
         then:
         1 * worker.doWorkA()
     }
-    
+
+	def "workA should be called when subscriber returns true - combined mock & stub"() {
+		given:
+		def sub1 = Mock(Subscriber) {
+			1 * receive("event1") >> true
+		}
+		publisher.subscribers = [sub1]
+
+		when:
+		publisher.publish("event1")
+
+		then:
+		1 * worker.doWorkA()
+	}
+
     def "workB should be called when subscriber returns false"() {
         given:
         def sub1 = Mock(Subscriber) {

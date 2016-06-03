@@ -2,8 +2,7 @@ package com.vajda.spockExamples.spring
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationConfiguration
-import org.springframework.context.ApplicationContext
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional
 
 import spock.lang.Specification
 
@@ -17,7 +16,7 @@ class SpringSpec extends Specification {
     @Autowired
     ProductRepository productRepository
 
-//	@Transactional
+	@Transactional
     def "product should exist in repo after save"() {
         expect:
         productController.findAll().empty
@@ -31,7 +30,7 @@ class SpringSpec extends Specification {
         products[0].name == "Laptop"
     }
 
-//	@Transactional
+	@Transactional
     def "product should not exist in repo after delete"() {
         given:
         def savedProduct = productController.save(new ProductDTO("Beer", 1, "Really good beer"))
@@ -46,7 +45,7 @@ class SpringSpec extends Specification {
         productController.findAll().empty
     }
 
-//	@Transactional
+	@Transactional
     def "edit should update state of existing product"() {
         given:
         def savedProduct = productController.save(new ProductDTO("Beer", 1, "Really good beer"))

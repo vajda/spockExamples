@@ -1,5 +1,6 @@
 package com.vajda.spockExamples.datadriven;
 
+import spock.lang.IgnoreRest
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -32,6 +33,7 @@ public class ExpressionSpec extends Specification {
         Operator.NE  | "<>"
     }
     
+    @IgnoreRest
     @Unroll("serialize #op operator to enumeration #enumOperator")
     def "data pipe approach"() {
         given:
@@ -44,7 +46,11 @@ public class ExpressionSpec extends Specification {
         result.operator == enumOperator
         
         where:
-        enumOperator << [Operator.EQ, Operator.GT, Operator.LT]
+        enumOperator << [
+            Operator.EQ,
+            Operator.GT,
+            Operator.LT
+        ]
         op << ["=", ">", "<"]
     }
 }

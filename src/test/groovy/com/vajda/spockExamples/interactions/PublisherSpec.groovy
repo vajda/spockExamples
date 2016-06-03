@@ -2,7 +2,6 @@ package com.vajda.spockExamples.interactions
 
 import org.slf4j.Logger
 
-import spock.lang.IgnoreRest
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -39,7 +38,7 @@ class PublisherSpec extends Specification {
         publisher.publish("event1")
         
         then:
-        1 * sub1.receive(_ as String)
+        1 * sub1.receive(_ as Integer)
     }
     
     def "subscriber should receive published event - wrong object type"() {
@@ -76,7 +75,7 @@ class PublisherSpec extends Specification {
         publisher.publish("event2")
         
         then:
-        (_..3) * sub1.receive(_)
+        (_..1) * sub1.receive(_)
     }
     
     def "subscriber should receive published event - at least 3 times"() {
@@ -100,7 +99,7 @@ class PublisherSpec extends Specification {
         publisher.subscribers = [sub1]
         
         when:
-        publisher.publish("event1")
+        publisher.publish("event2")
         
         then:
         1 * worker.doWorkA()
@@ -133,7 +132,6 @@ class PublisherSpec extends Specification {
         then:
         1 * worker.doWorkB()
     }
-    
     @Unroll
     def "#method should be called when subscriber returns #value"() {
         given:
@@ -204,6 +202,7 @@ class PublisherSpec extends Specification {
         then:
         2 * worker.doWorkA()
         0 * worker._
+        0 * _._
     }
     
     def "workA should be called when subscriber returns true - stub return type"() {
@@ -261,6 +260,7 @@ class PublisherSpec extends Specification {
         publisher.publish("event4")
         publisher.publish("event5")
         publisher.publish("event6")
+        publisher.publish("event7")
         
         then:
         3 * worker.doWorkA()
@@ -305,9 +305,9 @@ class PublisherSpec extends Specification {
         1 * sub1.receive("event1")
         
         then:
-        1 * sub3.receive("event1")
+        1 * sub2.receive("event1")
         
         then:
-        1 * sub2.receive("event1")
+        1 * sub3.receive("event1")
     }
 }

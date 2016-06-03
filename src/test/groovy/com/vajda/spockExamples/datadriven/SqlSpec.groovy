@@ -1,7 +1,5 @@
 package com.vajda.spockExamples.datadriven
 
-import org.junit.Before;
-
 import groovy.sql.Sql
 import spock.lang.Shared
 import spock.lang.Specification

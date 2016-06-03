@@ -1,8 +1,5 @@
 package com.vajda.spockExamples.basic
 
-import com.vajda.spockExamples.basic.Account;
-import com.vajda.spockExamples.basic.InvalidAmountWithdrawnException;
-
 import spock.lang.Ignore
 import spock.lang.IgnoreRest
 import spock.lang.Specification
@@ -16,7 +13,7 @@ class AccountSpec extends Specification {
         def account = new Account(3)
         
         expect:
-        account.balance == 3
+        account.balance == 2
     }
 
     def "withdraw some amount"() {
@@ -35,7 +32,7 @@ class AccountSpec extends Specification {
         def account = new Account(3.5)
 
         when:
-        account.withdraw(-1)
+        account.withdraw(1)
 
         then:
         thrown(InvalidAmountWithdrawnException)
@@ -61,7 +58,7 @@ class AccountSpec extends Specification {
         account.withdraw(2)
 
         then:
-        old(account.balance) == account.balance + 2
+        old(account.balance) == account.balance + 1
     }
     
     @Ignore
@@ -76,6 +73,7 @@ class AccountSpec extends Specification {
         account.balance == 1.2
     }
     
+    @IgnoreRest
     @Unroll
     def "when #amount is withdrawn from #startBalance it should remain #endBalance"() {
         given:

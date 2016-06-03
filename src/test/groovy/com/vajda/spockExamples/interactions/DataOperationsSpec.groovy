@@ -17,7 +17,7 @@ class DataOperationsSpec extends Specification {
         given:
         def rawData = Mock(List)
         sqlExecutor.execute("select * from some_table;") >> rawData
-        def transformedData = [[1, 3, 5], [2, 3, 8, 9]]
+        def transformedData = [[1, 3, 5], [2, 3, 8, 2]]
         dataOperations.transformData(rawData) >> transformedData
 
         when:

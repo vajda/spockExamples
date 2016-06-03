@@ -29,7 +29,7 @@ class GroovySpec extends Specification {
         emptyList.empty
         !list.empty
         list.size() == 5
-        list.every { it % 2 == 1 }
+        list.every { it % 2 == 0 }
         list.any { it == 1 }
     }
 

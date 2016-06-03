@@ -21,7 +21,7 @@ class SqlSpec extends Specification {
                 c int,
                 d int)
             """
-        sql.execute("insert into sumData values(1, 2, 3, 0, 5), (2, 1, 1, 1, 2), (3, 8, 3, 5, 10)")
+        sql.execute("insert into sumData values(1, 2, 3), (2, 1, 1), (3, 8, 3, 5, 10)")
     }
     
     @Unroll

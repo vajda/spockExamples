@@ -29,7 +29,7 @@ class AccountSpec extends Specification {
     
     def "exception should be thrown when negative amount is withdrawn"() {
         given:
-        def account = new Account(3.5)
+        def account = new Account(7.5)
 
         when:
         account.withdraw(1)
@@ -61,19 +61,6 @@ class AccountSpec extends Specification {
         old(account.balance) == account.balance + 1
     }
     
-    @Ignore
-    def "ignored test"() {
-        given:
-        def account = new Account(4.1)
-
-        when:
-        account.withdraw(3)
-
-        then:
-        account.balance == 1.2
-    }
-    
-    @IgnoreRest
     @Unroll
     def "when #amount is withdrawn from #startBalance it should remain #endBalance"() {
         given:

@@ -18,7 +18,7 @@ class AccountSpec extends Specification {
 
     def "withdraw some amount"() {
         given:
-        def account = new Account(4.2)
+        def account = new Account(
 
         when:
         account.withdraw(3)
